@@ -24,6 +24,8 @@ pip3 install -r requirements.txt
 python main.py
 ```
 
+## DO NOT try to flash firmware that is larger than 508KB. Use something like the tasmota-lite.bin and later from within tasmota, flash the complete firmware.
+
 ## Process explanation:
 1. Discover all Ewelink devices on the network using mDNS (thanks to zeroconf https://pypi.org/project/zeroconf).
 2. Select the device to upload the new firmware.
@@ -38,6 +40,11 @@ Dependencies:
 * https://pypi.org/project/requests/
 * https://pypi.org/project/simple-term-menu/
 
-TODO: Handle requests error codes.
+REST API reference:
+http://developers.sonoff.tech/basicr3-rfr3-mini-http-api.html
+
+## TODO: 
+* Handle requests error codes.
+* Check for maximum firmware size.
 
 This is a project intended to personal use. Use it at your OWN RISK.
