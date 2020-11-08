@@ -9,7 +9,7 @@ import socket
 
 import server
 
-DEVEL = True
+DEVEL = False
 
 
 class ZeroconfListener():
