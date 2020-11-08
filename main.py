@@ -17,8 +17,8 @@ class ZeroconfListener():
     Listener definition used by Zeroconf.
     Collects all discovered devices into the discovered list.
     """
-    def __init__(self, discovered):
-        self.discovered = discovered
+    def __init__(self):
+        self.discovered = []
 
     def remove_service(self, zeroconf, type, name):
         print("Service %s removed" % (name,))
@@ -65,13 +65,14 @@ def main():
     """
     zeroconf = Zeroconf()
     print("Browsing sonoff devices...\n\n")
-    discovered = []
-    listener = ZeroconfListener(discovered)
+    listener = ZeroconfListener()
     browser = ServiceBrowser(zeroconf, "_ewelink._tcp.local.", listener, delay=1000)
     try:
         input("Press enter to stop discovering...\n\n")
     finally:
         zeroconf.close()
+
+    discovered = listener.discovered
     
     if not discovered and not DEVEL:
         raise Exception("Nothing is discovered...")
