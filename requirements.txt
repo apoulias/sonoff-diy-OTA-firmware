@@ -1,0 +1,4 @@
+requests==2.24.0
+zeroconf==0.28.6
+simple-term-menu==0.10.4
+rangehttpserver==1.2.0
