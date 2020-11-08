@@ -29,6 +29,6 @@ pip3 install -r requirements.txt
 5. POST request to the device providing the HTTP server link of the new firmware.
 6. Hard coded sleep of 10 minutes to ensure that transmission is over. If it is over before that period, feel free to kill the proceess with Ctrl+C.
 
-TO DO: add requirements.txt
+TODO: Handle requests error codes.
 
 This is a project intended to personal use. Use it at your OWN RISK.
