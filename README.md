@@ -1,5 +1,5 @@
 # sonoff-diy-OTA-firmware
-Command line process to upload a new firmware Over the Air to Sonoff DIY devices.
+Command line process to upload a new firmware Over the Air to Sonoff DIY devices using the REST API http://developers.sonoff.tech/basicr3-rfr3-mini-http-api.html.
 
 Created using Python 3.8 and tested on Sonoff Basic R3. 
 
@@ -39,9 +39,6 @@ Dependencies:
 * https://pypi.org/project/zeroconf
 * https://pypi.org/project/requests/
 * https://pypi.org/project/simple-term-menu/
-
-REST API reference:
-http://developers.sonoff.tech/basicr3-rfr3-mini-http-api.html
 
 ## TODO: 
 * Handle requests error codes.
