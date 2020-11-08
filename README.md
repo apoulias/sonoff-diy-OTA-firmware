@@ -4,9 +4,13 @@ Command line process to upload a new firmware Over the Air to Sonoff DIY devices
 Created using Python 3.8. 
 
 ## Recommended use:
-1. Create a virtual environment 
+1. Create a virtual environment (venv, conda or whatever): 
 ```
 python3 -m venv /path/to/new/virtual/environment
+```
+or 
+```
+conda create -n venv <environment_name>
 ```
 2. Activate the environment.
 3. Install the requirements.txt
