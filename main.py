@@ -117,7 +117,7 @@ def main():
         print("OTA flash")
         url = "http://{}:{}/zeroconf/ota_flash".format(ip, port)
         sha256 = hashlib.sha256(open(firmware, "rb").read()).hexdigest()
-        download_url = "http://{}:8000/{}".format(get_ip(), os.path.basename(firmware))
+        download_url = "http://{}:{}/{}".format(get_ip(), server.PORT, os.path.basename(firmware))
         data = {"deviceid": id_,
                 "data": {"downloadUrl": download_url,
                         "sha256sum": sha256}}
