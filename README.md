@@ -12,7 +12,7 @@ python3 -m venv /path/to/new/virtual/environment
 ```
 or 
 ```
-conda create -n venv <environment_name>
+conda create -n venv <environment_name> python=3.8
 ```
 2. Activate the environment.
 3. Install the requirements.txt
