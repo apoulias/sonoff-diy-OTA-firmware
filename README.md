@@ -1,7 +1,9 @@
 # sonoff-diy-OTA-firmware
 Command line process to upload a new firmware Over the Air to Sonoff DIY devices.
 
-Created using Python 3.8. 
+Created using Python 3.8 and tested on Sonoff Basic R3. 
+
+### The Sonoff device must be on DIY mode and on the same network as the computer running this script.
 
 ## Recommended use:
 1. Create a virtual environment (venv, conda or whatever): 
