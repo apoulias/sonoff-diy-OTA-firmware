@@ -3,10 +3,15 @@ Command line process to upload a new firmware Over the Air to Sonoff DIY devices
 
 Created using Python 3.8 and tested on Sonoff Basic R3. 
 
-### The Sonoff device must be on DIY mode and on the same network as the computer running this script.
+### The Sonoff device must be on DIY mode and on the same network(sonoffDiy) as the computer running this script.
+This requires:
+* Jumper on the designated pins
+* Wifi network:
+  * SSID: sonoffDiy
+  * pass: 20170618sn
 
 ## Recommended use:
-1. Create a virtual environment (venv, conda or whatever): 
+1. Create a virtual environment (venv or conda or something else): 
 ```
 python3 -m venv /path/to/new/virtual/environment
 ```
