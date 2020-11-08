@@ -32,6 +32,12 @@ python main.py
 5. POST request to the device providing the HTTP server link of the new firmware.
 6. Hard coded sleep of 10 minutes to ensure that transmission is over. If it is over before that period, feel free to kill the proceess with Ctrl+C.
 
+Dependencies: 
+* https://pypi.org/project/rangehttpserver/
+* https://pypi.org/project/zeroconf
+* https://pypi.org/project/requests/
+* https://pypi.org/project/simple-term-menu/
+
 TODO: Handle requests error codes.
 
 This is a project intended to personal use. Use it at your OWN RISK.
