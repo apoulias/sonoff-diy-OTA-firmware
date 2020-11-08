@@ -1,12 +1,8 @@
 from zeroconf import ServiceBrowser, Zeroconf, IPVersion
 from simple_term_menu import TerminalMenu
-import tkinter as tk
-from tkinter import filedialog
-import enquiries
 import os
 import time
 import hashlib
-import threading
 import multiprocessing
 import requests
 import socket
