@@ -19,9 +19,12 @@ conda create -n venv <environment_name>
 ```
 pip3 install -r requirements.txt
 ```
-4. python main.py
+4. Execute the script:
+```
+python main.py
+```
 
-## Followed process:
+## Process explanation:
 1. Discover all Ewelink devices on the network using mDNS (thanks to zeroconf https://pypi.org/project/zeroconf).
 2. Select the device to upload the new firmware.
 3. Start a HTTP server (thanks to RangeHTTPServer https://github.com/danvk/RangeHTTPServer) to serve the directory of the selected firmware.
