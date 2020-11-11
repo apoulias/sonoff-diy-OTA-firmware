@@ -95,26 +95,38 @@ def main():
     if not os.path.isfile(firmware):
         raise Exception("{} is not a file".format(firmware))
     
+    if os.stat(firmware).st_size > 508000:
+        raise Exception("{} is larger than 508KB.".format(firmware))
+
     directory = os.path.dirname(firmware)
     
     # Start http file server
+    print("Starting HTTP server...")
     p = multiprocessing.Process(target=server.main, args=(directory,))
     p.start()
-    time.sleep(15)
-
     try:
-        # Unlock OTA
-        print("OTA unlock")
-        url = "http://{}:{}/zeroconf/ota_unlock".format(ip, port)
-        data = {"deviceid": id_,
+        # Check if OTA is ulocked
+        url = "http://{}:{}/zeroconf/info".format(ip, port)
+        data = {"deviceid": '',
                 "data": {}}
         ret = requests.post(url, json=data)
-        print(ret)
+        if not ret.json()["data"]["otaUnlock"]:
+            # Unlock OTA
+            print("Unlock OTA...")
+            url = "http://{}:{}/zeroconf/ota_unlock".format(ip, port)
+            data = {"deviceid": id_,
+                    "data": {}}
+            ret = requests.post(url, json=data)
+            print(ret.status_code)
+            if ret.status_code == 200:
+                print("Done")
+
+        else:
+            print("OTA is unlocked.")
         
         time.sleep(15)
-
         # Upload new firware
-        print("OTA flash")
+        print("Flash OTA...")
         url = "http://{}:{}/zeroconf/ota_flash".format(ip, port)
         sha256 = hashlib.sha256(open(firmware, "rb").read()).hexdigest()
         download_url = "http://{}:{}/{}".format(get_ip(), server.PORT, os.path.basename(firmware))
@@ -125,7 +137,7 @@ def main():
         print(ret)
 
         print()
-        print("Wait for maximum 10 minutes...")
+        print("Wait for 10 minutes...")
         print("If the firmware is updated and a tasmota wifi network appears, stop the process with Ctl+C")
         time.sleep(600)
 

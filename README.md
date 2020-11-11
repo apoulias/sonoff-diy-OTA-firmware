@@ -52,7 +52,6 @@ Dependencies:
 
 ## TODO: 
 * Handle requests error codes.
-* Check for maximum firmware size.
 * Add a Dockerfile.
 
 These scripts were quickly developed for my own needs to flash new firmware into sonoff devices since the existing tools seemed too complicated and didn't work. I don't guarantee it works on any use cases. Feel free to modify it since it's quite small in size.
