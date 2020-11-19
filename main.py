@@ -52,14 +52,15 @@ def main():
     1. Identify all sonoff diy devices and select one to upload the 
        firmware
     2. Enter the filepath of the new firmware
-    3. Potential security issue: Start a HTTP server, serving at the 
-       directory of the selected firmware !!!
+    3. HTTP server starts, serving the firmware's directory. This exposes 
+       that specific directory over the lan!
     4. Send a POST request to the device to unlock OTA
     5. Send a POST request to the device to get the new firmware, 
        served from the HTTP server
     6. Wait for 10 minutes(hardcoded) to finish the file transmission.
        If the Sonoff device has rebooted, feel free to kill the process
-       with Ctrl+C.
+       with Ctrl+C. As long as data are transfered to the sonoff device
+       you will see the requests made to the HTTP server.
 
     Good luck
     """
