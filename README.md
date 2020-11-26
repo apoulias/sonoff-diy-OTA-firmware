@@ -1,16 +1,20 @@
 # sonoff-diy-OTA-firmware
 Command line process to upload a new firmware Over the Air to Sonoff DIY devices using the REST API http://developers.sonoff.tech/basicr3-rfr3-mini-http-api.html.
 
-Created using Python 3.8 on Ubuntu 20.04 and tested on Sonoff Basic R3. 
+Created using Python 3.8 on Ubuntu 20.04 and tested on Sonoff Basic R3 and Sonoff Mini. 
 
-### The Sonoff device must be on DIY mode and on the same network(sonoffDiy) as the computer running this script.
+### The Sonoff device must be on DIY mode and on the same network(sonoffDiy) with the computer running this script.
 This requires:
-* Jumper on the designated pins
-* Wifi network:
-  * SSID: sonoffDiy
-  * pass: 20170618sn
+* DIY 1.0:
+  * Jumper on the designated pins
+  * Wifi network with SSID: sonoffDiy and password: 20170618sn
+* DIY 2.0: Check http://developers.sonoff.tech/sonoff-diy-mode-api-protocol.html
 
 ## Recommended use:
+### AppImage:
+* If on Linux, download and execute the AppImage from the releases page.
+
+### Python virtual environment (Linux & Windows):
 1. Create a virtual environment (venv or conda or something else): 
 ```
 python3 -m venv /path/to/new/virtual/environment
@@ -28,13 +32,14 @@ pip3 install -r requirements.txt
 ```
 python main.py
 ```
+The commands may differ to Windows.
 
-## DO NOT try to flash firmware that is larger than 508KB. Use something like the tasmota-lite.bin and later from within tasmota, flash the complete firmware.
+## Do not try to flash firmware that is larger than 508KB. Use something like the tasmota-lite.bin and later from within tasmota, flash the complete firmware.
 
 ## Process steps:
-1. Download the firmware file.
+1. Download the firmware file (for example tasmota-lite.bin).
 2. Run the main.py script.
-3. Discover all Ewelink devices on the network using mDNS (thanks to zeroconf https://pypi.org/project/zeroconf). The discovery stops by pressing Enter.
+3. Wait until your device gets discovered. If so, the discovery stops by pressing Enter. The process detects all Ewelink devices on the network using mDNS (thanks to zeroconf https://pypi.org/project/zeroconf).
 4. Select the device to upload the new firmware.
 5. The HTTP server starts(thanks to RangeHTTPServer https://github.com/danvk/RangeHTTPServer) to serve the directory of the selected firmware.
 6. The process makes sure the OTA functionality is unlocked, using the appropriate REST request.
@@ -54,5 +59,5 @@ Dependencies:
 * Handle requests error codes.
 * Add a Dockerfile.
 
-These scripts were quickly developed for my own needs to flash new firmware into sonoff devices since the existing tools seemed too complicated and didn't work. I don't guarantee it works on any use cases. Feel free to modify it since it's quite small in size.
+These scripts were quickly developed for my own needs to flash new firmware into sonoff devices since the existing tools seemed too complicated and couldn't manage to use it on Linux. I don't guarantee it works on any cases.
 Please use it at your OWN RISK.
